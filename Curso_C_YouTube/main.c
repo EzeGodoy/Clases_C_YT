@@ -1,4 +1,4 @@
-CLASE 1
+CLASE 1  ENTRADA Y SALIDA
 
 #include<stdio.h>  //Libreria. El .h significa que es un header, un archivo de cabezera.
                     //El stdio.h significa: standar input output header (cabezera estandar de entrada y salida de datos).
@@ -106,7 +106,7 @@ int main()
     //scanf("%s",x) Sirviria solo si quiero guardar mi nombre o mi apellido, pero si quiero guardar caracteres separados no sirve
     gets(x);                        //No es necesario escribir nada solo la variable y ya la guarda
                                     //%s porque es un string, el ampersam ya no es necesario con varios caracteres
-                                   //El scanf solo guarda un caracter hasta que encuentra un espacio, luego salta y no  guarda nada. Para eso se usa el gets
+                                   //El scanf solo guarda un caracter hasta que encuentra un espacio, luego salta y no guarda nada. Para eso se usa el gets
 
     printf("\nSu nombre es: %s\n\n",x);
 
@@ -457,7 +457,7 @@ int main()
 
 
 
-CLASE 13
+CLASE 13 CONDICIONAL IF
 
 #include <stdio.h>
 
@@ -539,7 +539,7 @@ CLASE 15
 #define TARIFA3 0.9
 
 //Visualizar la tariga de luz sugun el gasto de corriente electrica para un gasto menor de 1000kw/h
-//La tariga es 1.2, entre 1000 y 1.850kw/h es 10 y mayor de 1.850kw/h 0.9
+//La tarifa es 1.2, entre 1000 y 1.850kw/h es 10 y mayor de 1.850kw/h 0.9
 
 int main()
 {
@@ -759,7 +759,7 @@ int main()
 
     if(tecla=='1')
     {
-        system("cls");//System Clear Scrrem. Esta funcion lo que hace es limpiar la pantalla y necesita si o si la libreria #include<stdlib.h>
+        system("cls");//System Clear Screen. Esta funcion lo que hace es limpiar la pantalla y necesita si o si la libreria #include<stdlib.h>
         printf("Ha funcionado, el limpiado de pantalla");
     }
 
@@ -834,7 +834,7 @@ int main()
 
 
 
-CLASE 19
+CLASE 19 SENTENCIA SWITCH
 
 #include<stdio.h>
 
@@ -1234,7 +1234,7 @@ int main()
 
 
 
-CLASE 24
+CLASE 24 CONDICIONAL WHILE
 
 while(condicion)
 {
@@ -1749,33 +1749,874 @@ int main()
 	return 0;
 }
 
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Hacer un bucle do...while para imprimir las letras minusculas del alfabeto
+//El bucle do while primero realiza la accion do y luego verifica while para ver si vuelve a ejecutar do
+
+#include<stdio.h>
+
+int main()
+{
+	char letra = 'a';
+
+	do  //Hacer, lo que significa que esto se va a repetir siempre y cuando se cumpla el while
+    {
+		printf("%c.\n",letra);
+		letra++;
+	}
+
+	while(letra <= 'z'); //Mientras, si se cumple el while tambien se va a ejecutar el do
+
+	return 0;
+}
 
 
 
+CLASE 30 (FUNCIONES)
+
+//Funciones sin retorno de valor:
+
+    void nombreFuncion (parametros)        //La funcion void no tiene retorno
+    {
+        instrucciones;
+    }
+
+//functiones con retorno de valor:
+
+    tipo_dato nombreFuncion (parametros)    //El tipo de dato puede ser int float char
+    {
+        instrucciones;
+        return expresion;
+    }
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+#include<stdio.h>
+
+//Prototipos: Es una manera en la que le indicamos al programa en C que existe una determinada funcion
+void saludo(); //Esto es un prototipo
+               //C solo va a ejecutar el main nada mas
+               //Si no coloco el prototipo no va a saber donde buscar y va a pasar al main
+int main()
+{
+    saludo();
+
+    return 0;
+}
+
+void saludo()  //Con Code::Block se puede hacer un source=fuente (((Se debe ir a File luego a new luego a File... y tocar C/C++ source darle el nombre que se quiere en este caso
+               //Esto seria para tener el main.c limpio            seria Funciones y ahi guardar todas las funciones, para luego llamarlas desde el main)))
+{
+    printf("\nHola que tal\n"); //Esta es una funcion vacia que no tiene retorno
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Sumar dos numeros con una funcion aparte del main
+
+#include<stdio.h>
+
+int main()
+{
+    int a,b;
+
+    printf("Digite dos numeros: ");
+    scanf("%i %i",&a,&b);
+
+    printf("\nLa suma es: %i",sumar(a,b));//Al ser dos variables y en la funcion sumar los parametros son dos variables no es necesario que tengan el mismo nombre
+                                          //Aca se llama a la funcion sumar en el printf y se da las variables digitadas para que vayan a la funcion sumar.
+
+    return 0;
+}
+
+int sumar(int n1, int n2)//Parametros: Aca tiene dos parametros int n1 e int n2. Los parametros son los datos con los que se va a resolver un determinado problema
+{
+    int suma=0; //Esta es una variable local, lo que significa que solo va a funcionar adentro de la funcion sumar
+
+    suma=n1+n2;
+
+    return suma; //Necestio que retome a suma para que guarde el valor de n1 + n2
+}
 
 
 
+CLASE 31
+
+//Determinar si un numero es par o no
+
+#include<stdio.h>
+
+int comprobar(int numero);//Prototipo
+
+int main()
+{
+    int numero;
+    int x;
+
+    printf("Digite un numero: ");
+    scanf("%i",&numero);
+
+    x=comprobar(numero);//X aca vale lo que la funcion determine
+
+    if(x==0)
+    {
+        printf("\nEl numero es par");
+    }
+
+    else
+    {
+        printf("\nEl numero es impar");
+    }
+
+    return 0;
+}
+
+int comprobar (int numero)//int numero es mi parametro y comprobar es la funcion, esta es una funcion con retorno de valor
+{
+
+    if(numero%2==0)
+    {
+        return 0;//Retorna a main un 0 por lo que es verdad
+    }
+
+    else
+    {
+        return 1;//Retorna a main un 1 por lo que es mentira
+    }
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Mismo ejercicio pero sin retorno
+
+#include<stdio.h>
+
+void comprobar(int numero);
+
+int main()
+{
+    int numero;
+
+    printf("Digite un numero: ");
+    scanf("%i",&numero);
+
+    comprobar(numero);//Siempre se debe hacer el llamado de la funcion al main, aparte del prototipo arrriba. al menos que se use una extencion Head
+
+    return 0;
+}
+
+void comprobar(int numero)//Al ser un void no devuelve, los void no retornan nada
+{
+    if(numero%2==0)
+    {
+        printf("\nEl numero es par");
+    }
+
+    else
+    {
+        printf("\nEl numero es impar");
+    }
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Hacer un programa que realize la media aritmetica de 2 numeros.(Usando una funcion)
+
+#include<stdio.h>
+
+int media_aritmetica();
+
+int main()
+{
+    int numero1,numero2;
+
+    printf("Digite dos numeros: ");
+    scanf("%i %i",&numero1,&numero2);
+
+    printf("\nLa media aritmetica es: %i",media_aritmetica(numero1,numero2));//Van las variables que estan en el main, se llama a la funcion
+
+    return 0;
+}
+
+int media_aritmetica (int a, int b)
+{
+    int suma=0;
+
+    suma = (a+b)/2;
+
+    return suma;//Retorna el resultado de suma al main
+}
 
 
 
+CLASE 32
+
+/*Hace un programa que muestre un menú con las opciones sumar, restar, multiplicar y dividir, el programa solicitará una opción y
+realizará la tarea elegida, se debe usar un procedimientos*/
+
+#include<stdio.h>
+
+void menu();
+void sumar();
+void restar();
+void multiplicar();
+void dividir();
+
+int main()
+{
+    menu();//En el menu estan llamadas todas las funciones
+
+    return 0;
+}
+
+void menu()
+{
+    int opc;
+
+    do//Se escribe el do y se lo cierrra despues del switch asi ejecuta el menu y las opciones elegidas
+    {
+        printf("\n1. Sumar");
+		printf("\n2. Restar");
+		printf("\n3. Multiplicar");
+		printf("\n4. Dividir");
+		printf("\n5. Salir");
+		printf("\nOpcion: ");
+		scanf("%i",&opc);
+
+    switch(opc)
+    {
+        case 1: sumar();break; //Quiebra y vuelve al menu, asi hace en todos los case
+        case 2: restar();break;//Se hace llamado a las funciones
+        case 3: multiplicar();break;
+        case 4: dividir();break;
+    }
+    }
+
+    while(opc != 5);//Si se apreta 5 la condicion es falsa por lo que sale, si se apreta otro numero que no sea 1,2,3,4 o 5 vuelve a mostrar el meni
+}
+
+void sumar()//Aca en las funciones se digita todo para simplemente despues llamarlas
+{
+    int n1,n2,suma=0;
+
+    printf("Digite dos numeros: ");
+    scanf("%i %i",&n1,&n2);
+
+    suma = n1+n2;
+
+    printf("\nLa suma es: %i",suma);
+}
+
+void restar()
+{
+	int n1,n2,resta=0;
+
+	printf("\nDigite 2 numeros: ");
+	scanf("%i %i",&n1,&n2);
+
+	resta = n1-n2;
+
+	printf("La resta es: %i.\n",resta);
+}
+
+void multiplicar()
+{
+	int n1,n2,mult=0;
+
+	printf("\nDigite 2 numeros: ");
+	scanf("%i %i",&n1,&n2);
+
+	mult = n1*n2;
+
+	printf("La multiplicacion es: %i.\n",mult);
+}
+
+void dividir()
+{
+	int n1,n2,div=0;
+
+	printf("\nDigite 2 numeros: ");
+	scanf("%i %i",&n1,&n2);
+
+	div = n1/n2;
+
+	printf("La division es: %i.\n",div);
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Hacer un programa que pida por pantalla un número del 1 al 10 y mediante un procedimiento muestre por pantalla el número escrito en letras.
+
+#include<stdio.h>
+
+void comprobar(int n);
+
+int main()
+{
+	int numero;
+
+	printf("Digite un numero del 1 al 10: ");
+	scanf("%i",&numero);
+
+	while(numero<1 || numero>10)
+    {
+		printf("Digite un numero del 1 al 10: ");
+		scanf("%i",&numero);
+	}
+
+	comprobar(numero);
+
+	return 0;
+}
+
+void comprobar(int n)
+{
+	switch(n)
+	{
+		case 1: printf("Uno");break;
+		case 2: printf("Dos");break;
+		case 3: printf("Tres");break;
+		case 4: printf("Cuatro");break;
+		case 5: printf("Cinco");break;
+		case 6: printf("Seis");break;
+		case 7: printf("Siete");break;
+		case 8: printf("Ocho");break;
+		case 9: printf("Nueve");break;
+		case 10: printf("Diez"); break;
+	}
+}
 
 
 
+CLASE 33
+
+/*Hacer un programa que pida por pantalla una temperatura en grados Celsius, muestre un menú para convertirlos a Fahrenheit o Kelvin y muestre el equivalente por
+pantalla, utilizar funciones.*/
+
+#include<stdio.h>
+
+float fahrenheit(float C);
+float kelvin(float C);
+
+int main()
+{
+	float C=0,F=0,K=0;
+	int opc;
+
+	do
+    {
+		printf("\nDigite los grados Celsius: ");
+		scanf("%f",&C);
+
+        printf("\n1. Transformar a Grados Fahrenheit");
+        printf("\n2. Transformar a Grados Kelvin");
+        printf("\n3. Salir");
+        printf("\nOpcion: ");
+        scanf("%i",&opc);
+
+	switch(opc)
+	{
+		case 1: F = fahrenheit(C);
+				printf("\nEl equivalente en Fahrenheit es: %.2f\n",F);break;
+		case 2: K = kelvin(C);
+				printf("\nEl equivalente en Kelvin es: %.2f\n",K);break;
+	}
+	}
+
+	while(opc != 3);
+
+	return 0;
+}
+
+float fahrenheit(float C)
+{
+	float F=0;
+	F = (9*C)/5 + 32;
+	return F;
+}
+
+float kelvin(float C)
+{
+	float K=0;
+	K = C + 273.15;
+	return K;
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Hacer un programa que muestre una tabla de multiplicar hasta el 20 de un número cualquiera por pantalla, el número se pedirá en el programa principal. Usar procedimiento
+
+#include<stdio.h>
+
+void tabla(int n);
+
+int main()
+{
+	int numero;
+
+	printf("Digite un numero: ");
+	scanf("%i",&numero);
+
+	tabla(numero);
+
+	return 0;
+}
+
+void tabla(int n)
+{
+	int i;
+
+	for(i=1;i<=20;i++)
+    {
+		printf("\n%i * %i = %i",n,i,n*i);
+	}
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+//Hace un programa que muestre 3 números ordenados de ascendentemente, utilizar un procedimiento para cada operación.
+
+#include<stdio.h>
+
+void ascendente(int a,int b, int c);
+
+int main()
+{
+	int a,b,c;
+
+	printf("Digite 3 numeros: ");
+	scanf("%i %i %i",&a,&b,&c);
+
+	ascendente(a,b,c);
+
+	return 0;
+}
+
+void ascendente(int a,int b, int c)
+{
+	printf("\nOrden Ascendente\n");
+
+	if(a>=b && a>=c)
+    {
+
+		if(b>=c)
+		{
+			printf("%i %i %i",c,b,a);
+		}
+
+		else
+		{
+			printf("%i %i %i",b,c,a);
+		}
+	}
+
+	if(b>=a && b>=c)
+	{
+
+		if(a>=c)
+		{
+			printf("%i %i %i",c,a,b);
+		}
+
+		else
+		{
+			printf("%i %i %i",a,c,b);
+		}
+	}
+
+	if(c>=a && c>=b)
+	{
+
+		if(a>=b)
+		{
+			printf("%i %i %i",b,a,c);
+		}
+
+		else
+		{
+			printf("%i %i %i",a,b,c);
+		}
+	}
+}
+
+*/
+
+//Hacer un programa que muestre 3 números ordenados desendentemente, utilizar un procedimiento para cada operación.
+
+#include<stdio.h>
+
+void descendente(int a,int b, int c);
+
+int main()
+{
+	int a,b,c;
+
+	printf("Digite 3 numeros: ");
+	scanf("%i %i %i",&a,&b,&c);
+
+	descendente(a,b,c);
+
+	return 0;
+}
+
+void descendente(int a,int b, int c)
+{
+	printf("\nOrden Descendente\n");
+
+	if(a>=b && a>=c)
+    {
+
+		if(b>=c)
+		{
+			printf("%i %i %i",a,b,c);
+		}
+
+		else
+		{
+			printf("%i %i %i",a,c,b);
+		}
+	}
+
+	if(b>=a && b>=c)
+	{
+
+		if(a>=c)
+		{
+			printf("%i %i %i",b,a,c);
+		}
+
+		else
+		{
+			printf("%i %i %i",b,c,a);
+		}
+	}
+
+	if(c>=a && c>=b)
+	{
+
+		if(a>=b)
+		{
+			printf("%i %i %i",c,a,b);
+		}
+
+		else
+		{
+			printf("%i %i %i",c,b,a);
+		}
+	}
+}
 
 
 
+CLASE 34
+
+//FUNCIONES MATEMATICAS
+
+#include<stdio.h>
+
+void funciones_matematicas();
+
+int main()
+{
+	funciones_matematicas();
+
+	return 0;
+}
+
+void funciones_matematicas()
+{
+	float x,cambio;
+
+	printf("Digite un numero: ");
+	scanf("%f",&x);
+
+	cambio = sqrt(x);//Saca la raiz cuadrada
+	//cambio = ceil(x) Redondea al proximo entero mas cercano. Ejemplo:2.1 lo redondea a 3, si hay un decimal ya redondea hacia arriba
+	//cambio = fabs(x) Devuelve el valor absoluto del numero, por lo que si digito un numero negativo -4 me lo transforma a 4
+	//cambio = floor(x) Al contrario de ceil lo va a redondear al numero del que salio. Ejemplo: 2.9 lo redondea a 2
+	//cambio = fmod(x,y) Calcula el resto de la division de x/y. Nos devuelve el residuo
+	//cambio = pow(x,y) Calcula x elevado a la potencia y. Ejemplo: pow(variable,5)
+
+	printf("\n %.2f",cambio);
+
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//FUNCIONES TRIGONOMETRICAS
+
+	acos(x)    -> Calcula el arco coseno de x.
+	asin(x)    -> Calcula el arco seno de x.
+	atan(x)    -> Calcula el arco tangente de x.
+	cos(x)     -> Calcula el coseno del angulo x, en radianes.
+	sin(x)     -> Calcula el seno del angulo x, en radianes.
+	tan(x)     -> Devuelve la tangente del angulo x, en radianes.
+
+#include<stdio.h>
+#include<math.h>
+
+void funciones_trigonometricas();
+
+int main()
+{
+	funciones_trigonometricas();
+
+	return 0;
+}
+
+void funciones_trigonometricas()
+{
+	float x,resultado=0;
+
+	printf("Digite un numero: ");
+	scanf("%f",&x);
+
+	resultado = tan(x);//Se deberia cambiar tan(x) por lo que se quiera calcular
+
+	printf("\n %.2f",resultado);
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Funcion Aleatoria:
+
+    srand(time(NULL));//Genera un numero totalmente aleatorio, necesaria la libreria time
+	variable  = limite_inferior + rand() % ((limite_superior + 1 ) - limite_inferior);//Formula
+
+#include<stdio.h>
+#include<time.h>
+
+void funcion_aleatoria();
+
+int main()
+{
+
+	funcion_aleatoria();
+
+	return 0;
+}
+
+void funcion_aleatoria()
+{
+	int numero,i,li,ls;
+
+	srand(time(NULL));
+
+    //Aca se digita los numeros limite inferior y limite superior
+
+	printf("Digite el limite inferior: ");
+	scanf("%i",&li);
+	printf("Digite el limite superior: ");
+	scanf("%i",&ls);
+
+    //numero=1+rand()%((10+1)-1); Genera un solo numero aleatorio, si entra a un for genera la cantidad de numeros aleatorios que se soliciten en el for
+
+	for(i=1;i<=20;i++)
+    {
+		numero = li + rand() % ((ls+1) - li); //Aca se van a imprimir por el bucle for 20 numeros aleatorios entre los limites que ingrese el usuario
+		printf("%i.\n",numero);
+	}
+}
 
 
 
+CLASE 35 (RECURSIVIDAD)
+
+  Recursividad: Una funcion recursiva es una funcion que se llama asi misma
+    1. Caso Base
+    2. Caso Recursivo
+
+
+    a(x)//Funcion a con parametro x
+    {
+        if(n=1)//Caso Base: La funcion parte de los casos base
+        {
+            return n;
+        }
+
+        else
+        {
+            a(x-1);//Caso Recursividad: La funcion se vuelve a llamar asi misma con algun modificador
+        }
+    }
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Factorial
+
+#include<stdio.h>
+
+long factorial(int n);
+
+int main()
+{
+    int numero;
+
+    printf("Digite un numero: ");
+    scanf("%i",&numero);
+
+    printf("\nEl factorial del numero es: %li",factorial(numero));
+
+    return 0;
+}
+
+long factorial(int n);
+{
+    if(n>=1)
+    {
+        return 1;
+    }
+
+    else
+    {
+        return (n*factorial(n-1));
+    }
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Serie fibonacci con Recursividad
+
+#include<stdio.h>
+
+int fibonacci(int n);
+
+int main()
+{
+	int numero,i;
+
+	printf("Digite el numero de terminos: ");
+	scanf("%i",&numero);
+
+	for(i=1;i<=numero;i++)
+    {
+		printf("%i , ",fibonacci(i));
+	}
+
+	return 0;
+}
+
+int fibonacci(int n)
+{
+	if(n==0 || n==1)
+    {
+		return n;
+	}
+
+	else
+	{
+		return (fibonacci(n-1) + fibonacci(n-2));
+	}
+}
 
 
 
+CLASE 36
+
+//Consideremos una función que recibe un numero n e imprime los numeros del n al 1. Con recursividad
+
+#include<stdio.h>
+
+int listar(int n);
+
+int main()
+{
+	int i,numero;
+
+	printf("Digite el numero de terminos: ");
+	scanf("%i",&numero);
+
+	for(i=numero;i>0;i--)
+    {
+		printf("%i.\n",listar(i));
+	}
+
+	return 0;
+}
+
+
+int listar(int n)
+{
+	if(n==1||n==0)
+    {
+		return 1;
+	}
+
+	else
+	{
+		return listar(n-1)+1;
+	}
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//Pasar de numero entero a numero binario con Recursividad
+
+#include<stdio.h>
+
+void binario(int n);
+
+int main()
+{
+	int numero;
+
+	do
+    {
+		printf("Digite un numero: ");
+		scanf("%i",&numero);
+	}
+
+	while(numero<0);
+
+	binario(numero);//Llamo a la funcion binario y le da la variable en este caso a numero
+
+	return 0;
+}
+
+void binario(int n)
+{
+	if(n>1) binario(n/2);
+
+	printf("%i",n%2);
+
+}
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+//4. Invertir un numero entero con Recursividad.
+
+#include<stdio.h>
+
+void invertir(int n);
+
+int main()
+{
+	int numero;
+
+	do
+    {
+		printf("Digite un numero: ");
+		scanf("%i",&numero);
+	}
+
+	while(numero<0);
+
+	invertir(numero);
+
+	return 0;
+}
+
+void invertir(int n)
+{
+	printf("%i",n%10);
+	if(n>10) invertir(n/10);
+}
 
 
 
+CLASE 37 (ARRAY)
 
-
-
+Video 51
 
 
 
